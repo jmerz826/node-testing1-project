@@ -85,6 +85,9 @@ class Seasons {
    */
   constructor() {
     // ✨ initialize whatever properties are needed
+    this.seasonsArr = ['summer', 'fall', 'winter', 'spring'];
+    this.index = 0;
+    this.szn 
   }
 
   /**
@@ -101,8 +104,18 @@ class Seasons {
    */
   next() {
     // ✨ implement
+    if (this.index < 4) {
+      this.szn = this.seasonsArr[this.index];
+    } else {
+      this.szn = this.seasonsArr[this.index % 4]
+    }
+    this.index++;
+    return this.szn
   }
 }
+const seasons = new Seasons()
+seasons.next()
+console.log(seasons.szn)
 
 class Car {
   /**
