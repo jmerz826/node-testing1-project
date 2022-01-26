@@ -113,9 +113,6 @@ class Seasons {
     return this.szn
   }
 }
-const seasons = new Seasons()
-seasons.next()
-console.log(seasons.szn)
 
 class Car {
   /**
@@ -128,6 +125,9 @@ class Car {
     this.odometer = 0; // car initilizes with zero miles
     this.tank = tankSize; // car initiazes full of gas
     // ✨ initialize whatever other properties are needed
+    // this.tankSize = tankSize
+    this.name = name
+    this.mpg = mpg
   }
 
   /**
@@ -145,6 +145,17 @@ class Car {
    */
   drive(distance) {
     // ✨ implement
+    // const maxDistance = (this.tankSize * this.mpg)
+    this.odometer += distance
+    this.tank -= (distance / this.mpg)
+    if (this.tank < 0) {
+      const milesOver = -(this.tank * this.mpg)
+      this.odometer -= milesOver
+      this.tank = 0
+      return this.odometer + ` (ran out of gas after ${milesOver} miles)`
+    } else {
+      return this.odometer
+    }
   }
 
   /**
