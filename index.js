@@ -53,8 +53,9 @@ class Counter {
    */
   constructor(initialNumber) {
     // ✨ initialize whatever properties are needed
+    this.count = initialNumber
+    this.countDownCounter = 0
   }
-
   /**
    * [Exercise 4B] Counter.prototype.countDown counts down to zero
    * @returns {number} - the next count, does not go below zero
@@ -69,8 +70,20 @@ class Counter {
    */
   countDown() {
     // ✨ implement
+    if (this.countDownCounter === 0) {
+      this.countDownCounter++
+      return this.count
+    } else {
+      return (this.count > 0) ? this.count-- : 0
+    }
   }
 }
+
+const test = new Counter(3)
+test.countDown()
+test.countDown()
+console.log(test.countDown())
+
 
 class Seasons {
   /**
