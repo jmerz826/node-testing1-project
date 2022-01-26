@@ -52,7 +52,17 @@ describe('[Exercise 4] Counter', () => {
     counter.countDown()
     expect(counter.count).toBe(2)
   })
-  // test('[8] the count eventually reaches zero but does not go below zero', () => {})
+  test('[8] the count eventually reaches zero but does not go below zero', () => {
+    counter.countDown()
+    counter.countDown()
+    counter.countDown()
+    counter.countDown()
+    counter.countDown()
+    counter.countDown()
+    counter.countDown()
+    expect(counter.count).toBe(0);
+    expect(counter.count).not.toBeLessThan(0);
+  })
 })
 
 /*

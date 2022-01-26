@@ -79,12 +79,6 @@ class Counter {
   }
 }
 
-const test = new Counter(3)
-test.countDown()
-test.countDown()
-console.log(test.countDown())
-
-
 class Seasons {
   /**
    * [Exercise 5A] Seasons creates a seasons object
