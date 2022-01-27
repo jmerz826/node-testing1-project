@@ -120,8 +120,18 @@ describe('[Exercise 6] Car', () => {
     focus.drive(30)
     expect(focus.tank).toBe(19)
   })
-  // test('[17] refueling allows to keep driving', () => {})
-  // test('[18] adding fuel to a full tank has no effect', () => {})
+  test('[17] refueling allows to keep driving', () => {
+    focus.drive(1000)
+    expect(focus.odometer).toBe(600)
+    focus.refuel(10)
+    focus.drive(300)
+    expect(focus.odometer).toBe(900)
+  })
+  test('[18] adding fuel to a full tank has no effect', () => {
+    expect(focus.tank).toBe(20)
+    focus.refuel(10)
+    expect(focus.tank).toBe(20)
+  })
 })
 /*
 describe('[Exercise 7] isEvenNumberAsync', () => {

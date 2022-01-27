@@ -53,8 +53,8 @@ class Counter {
    */
   constructor(initialNumber) {
     // ✨ initialize whatever properties are needed
-    this.count = initialNumber
-    this.countDownCounter = 0
+    this.count = initialNumber;
+    this.countDownCounter = 0;
   }
   /**
    * [Exercise 4B] Counter.prototype.countDown counts down to zero
@@ -71,10 +71,10 @@ class Counter {
   countDown() {
     // ✨ implement
     if (this.countDownCounter === 0) {
-      this.countDownCounter++
-      return this.count
+      this.countDownCounter++;
+      return this.count;
     } else {
-      return (this.count > 0) ? this.count-- : 0
+      return this.count > 0 ? this.count-- : 0;
     }
   }
 }
@@ -85,9 +85,9 @@ class Seasons {
    */
   constructor() {
     // ✨ initialize whatever properties are needed
-    this.seasonsArr = ['summer', 'fall', 'winter', 'spring'];
+    this.seasonsArr = ["summer", "fall", "winter", "spring"];
     this.index = 0;
-    this.szn 
+    this.szn;
   }
 
   /**
@@ -107,10 +107,10 @@ class Seasons {
     if (this.index < 4) {
       this.szn = this.seasonsArr[this.index];
     } else {
-      this.szn = this.seasonsArr[this.index % 4]
+      this.szn = this.seasonsArr[this.index % 4];
     }
     this.index++;
-    return this.szn
+    return this.szn;
   }
 }
 
@@ -125,9 +125,9 @@ class Car {
     this.odometer = 0; // car initilizes with zero miles
     this.tank = tankSize; // car initiazes full of gas
     // ✨ initialize whatever other properties are needed
-    // this.tankSize = tankSize
-    this.name = name
-    this.mpg = mpg
+    this.tankSize = tankSize;
+    this.name = name;
+    this.mpg = mpg;
   }
 
   /**
@@ -146,15 +146,20 @@ class Car {
   drive(distance) {
     // ✨ implement
     // const maxDistance = (this.tankSize * this.mpg)
-    this.odometer += distance
-    this.tank -= (distance / this.mpg)
+    if (this.tank === 0) {
+      return this.odometer + " (no distance driven as tank is empty)";
+    }
+    this.odometer += distance;
+    this.tank -= distance / this.mpg;
     if (this.tank < 0) {
-      const milesOver = -(this.tank * this.mpg)
-      this.odometer -= milesOver
-      this.tank = 0
-      return this.odometer + ` (ran out of gas after ${milesOver} miles)`
+      const milesOver = -(this.tank * this.mpg);
+      this.odometer -= milesOver;
+      this.tank = 0;
+      return (
+        this.odometer + ` (ran out of gas after ${Math.round(milesOver)} miles)`
+      );
     } else {
-      return this.odometer
+      return this.odometer;
     }
   }
 
@@ -171,8 +176,23 @@ class Car {
    */
   refuel(gallons) {
     // ✨ implement
+    if (this.tank < this.tankSize) {
+      if (this.tank + gallons > this.tankSize) {
+        return this.odometer + ` (tank only holds ${this.tankSize})`
+      }
+      this.tank += gallons;
+      return this.odometer;
+    } else {
+      return "tank is already full";
+    }
   }
 }
+
+// const focus = new Car('focus', 20, 30)
+// focus.drive(600)
+// console.log(focus.drive(1));
+// console.log(focus.refuel(15))
+// console.log(focus.drive(450))
 
 /**
  * [Exercise 7] Asynchronously resolves whether a number is even
